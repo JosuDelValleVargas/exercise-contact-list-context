@@ -11,7 +11,7 @@ export const Contacts = () => {
 	});
 	const { actions } = useContext(Context);
 	useEffect(() => {
-		actions.getcontacts();
+		actions.obtenerContactos();
 	}, []);
 	return (
 		<div className="container">
@@ -27,7 +27,6 @@ export const Contacts = () => {
 							<ContactCard
 								key={index}
 								fullName={item.full_name}
-								adress={item.adress}
 								onDelete={() => setState({ showModal: true })}
 							/>
 						))}

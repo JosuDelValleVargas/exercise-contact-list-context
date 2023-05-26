@@ -5,12 +5,16 @@ const getState = ({ getStore, setStore }) => {
 			contacts: []
 		},
 		actions: {
-			getcontacts: () => {
-				// richiesta GET.
+			getContacts: (fullName, email, phone, adress) => {
+				setStore({ contacts: getStore().contacts.concat({ fullName, email, phone, adress }) });
+			},
+			// richiesta GET.
+
+			obtenerContactos: () => {
 				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/josuvalle")
 					// gestisci il successo
 					.then(response => response.json()) // converti a json
-					.then(data => console.log(data)) // stampa i dati sulla console
+					.then(data => setStore({ contacts: data })) // stampa i dati sulla console
 					.catch(err => console.log("Request Failed", err)); // gestisci gli errori
 			}
 
